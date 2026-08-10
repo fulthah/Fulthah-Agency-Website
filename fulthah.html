@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fulthah Agency · Global Recruitment</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0a1628;
+      --secondary: #1a2a4a;
+      --accent: #c9a96e;
+      --accent-light: #e8d5b0;
+      --accent-dark: #a8894e;
+      --gold-gradient: linear-gradient(135deg, #c9a96e, #e8d5b0, #c9a96e);
+      --bg-light: #f8f6f2;
+      --text-dark: #0a1628;
+      --text-light: #f8f6f2;
+      --shadow: 0 20px 60px rgba(10, 22, 40, 0.08);
+      --shadow-hover: 0 30px 80px rgba(10, 22, 40, 0.15);
+      --radius: 20px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---------- SCROLL ANIMATIONS ---------- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 20px rgba(10, 22, 40, 0.15);
+      letter-spacing: 0.3px;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(10, 22, 40, 0.25);
+    }
+    .btn-accent {
+      background: var(--gold-gradient);
+      color: var(--primary);
+    }
+    .btn-accent:hover {
+      box-shadow: 0 8px 30px rgba(201, 169, 110, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+    .btn-whatsapp {
+      background: #25d366;
+      color: white;
+    }
+    .btn-whatsapp:hover {
+      background: #1da959;
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+    }
+    .btn-whatsapp-uae {
+      background: #128C7E;
+      color: white;
+    }
+    .btn-whatsapp-uae:hover {
+      background: #0e6e63;
+    }
+    .btn-sm {
+      padding: 0.5rem 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 0.8rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+    }
+    header.scrolled {
+      background: rgba(10, 22, 40, 0.98);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo .fulthah {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo .agency {
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 6px;
+      color: rgba(255, 255, 255, 0.6);
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.6);
+      margin-top: -2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold-gradient);
+      transition: var(--transition);
+    }
+    .nav-links a:hover {
+      color: white;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .header-contact a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .header-contact a:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .header-contact a i {
+      font-size: 1rem;
+    }
+    .header-contact a .wa-icon {
+      color: #25d366;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 10rem 0 6rem;
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 70%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201, 169, 110, 0.2), transparent);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 .highlight {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .hero-stats .stat h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+    }
+    .hero-stats .stat h3 .gold {
+      color: var(--accent);
+    }
+    .hero-stats .stat p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.2rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+    .hero-map {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+    .hero-map svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #0d1a2e;
+    }
+    .hero-map .map-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(10, 22, 40, 0.6));
+      pointer-events: none;
+    }
+    .floating-badge {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: float 6s ease-in-out infinite;
+    }
+    .floating-badge i {
+      font-size: 1.2rem;
+    }
+    .floating-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #25d366;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .floating-badge.b1 {
+      top: 15%;
+      right: -10%;
+      animation-delay: 0s;
+    }
+    .floating-badge.b2 {
+      bottom: 25%;
+      left: -10%;
+      animation-delay: 2s;
+    }
+    .floating-badge.b3 {
+      top: 50%;
+      right: -5%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ---------- SECTION HEADERS ---------- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-header .label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-header h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .section-header p {
+      color: #6b7c93;
+      max-width: 600px;
+      margin: 0.5rem auto 0;
+    }
+
+    /* ---------- REGIONS / MAP SECTION ---------- */
+    .regions {
+      padding: 6rem 0;
+      background: white;
+    }
+    .regions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .regions-map svg {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .regions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .region-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      cursor: pointer;
+      border-left: 4px solid transparent;
+    }
+    .region-item:hover {
+      transform: translateX(8px);
+      border-left-color: var(--accent);
+      box-shadow: var(--shadow-hover);
+    }
+    .region-item .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .region-item .icon.europe { background: #e8f0fe; color: #1a5bbf; }
+    .region-item .icon.middle-east { background: #fef3e8; color: #d4762a; }
+    .region-item .icon.asia { background: #e8f8ee; color: #1a8a4a; }
+    .region-item .info h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .region-item .info p { color: #6b7c93; font-size: 0.9rem; }
+    .region-item .info .cities {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .region-item .info .cities span {
+      background: white;
+      padding: 0.15rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--secondary);
+      border: 1px solid #e6edf8;
+    }
+
+    /* ---------- JOB LOGOS / ICONS ---------- */
+    .jobs-section {
+      padding: 6rem 0;
+      background: var(--bg-light);
+    }
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .job-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .job-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold-gradient);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .job-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .job-card:hover::before {
+      opacity: 1;
+    }
+    .job-card .job-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: var(--bg-light);
+    }
+    .job-card .job-icon.tech { background: #e8f0fe; color: #1a5bbf; }
+    .job-card .job-icon.management { background: #fef3e8; color: #d4762a; }
+    .job-card .job-icon.education { background: #e8f8ee; color: #1a8a4a; }
+    .job-card .job-icon.healthcare { background: #fde8e8; color: #c0392b; }
+    .job-card .job-icon.finance { background: #e8edf8; color: #2c3e7a; }
+    .job-card .job-icon.energy { background: #f0ece8; color: #7a5a2a; }
+    .job-card .job-icon.driving { background: #e8f4f8; color: #1a6a7a; }
+    .job-card h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .job-card .location { color: #6b7c93; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .job-card .location i { color: var(--accent); margin-right: 0.3rem; }
+    .job-card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.8rem 0 1rem; }
+    .job-card .tags span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      background: var(--bg-light);
+      color: var(--secondary);
+    }
+    .job-card .tags span.region-europe { background: #e8f0fe; color: #1a5bbf; }
+    .job-card .tags span.region-middle-east { background: #fef3e8; color: #d4762a; }
+    .job-card .tags span.region-asia { background: #e8f8ee; color: #1a8a4a; }
+
+    /* ---------- PACKAGES ---------- */
+    .packages {
+      padding: 6rem 0;
+      background: white;
+    }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .package-card {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      position: relative;
+    }
+    .package-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .package-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, #fcf9f5, white);
+    }
+    .package-card .badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--gold-gradient);
+      color: var(--primary);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .package-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .package-card h3 { font-size: 1.5rem; font-weight: 800; }
+    .package-card .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 0.5rem 0;
+    }
+    .package-card .price span { font-size: 1rem; font-weight: 400; color: #6b7c93; }
+    .package-card .features {
+      list-style: none;
+      text-align: left;
+      margin: 1.5rem 0;
+      padding: 0;
+    }
+    .package-card .features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+    }
+    .package-card .features li i { color: var(--accent); width: 1.2rem; }
+    .package-card .btn { width: 100%; justify-content: center; }
+
+    /* ---------- STATS BANNER ---------- */
+    .stats-banner {
+      padding: 4rem 0;
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(201, 169, 110, 0.06), transparent 60%);
+      pointer-events: none;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .stats-grid .stat h3 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: white;
+    }
+    .stats-grid .stat h3 .gold { color: var(--accent); }
+    .stats-grid .stat p {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
+
+    /* ---------- APPLICATION FORM ---------- */
+    .apply-section {
+      display: none;
+      padding: 6rem 0;
+      background: var(--bg-light);
+    }
+    .apply-section.active { display: block; }
+    .apply-container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: white;
+      border-radius: var(--radius);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-hover);
+    }
+    .apply-container h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .apply-container h2 i { color: var(--accent); }
+    .apply-container .job-title-display {
+      margin: 0.5rem 0 1.5rem;
+      padding: 0.8rem 1.2rem;
+      background: var(--bg-light);
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .apply-container .job-title-display span { color: var(--accent); }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .form-group label .required { color: #e74c3c; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #e6edf8;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: var(--transition);
+      background: white;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .form-group input.error,
+    .form-group textarea.error,
+    .form-group select.error {
+      border-color: #e74c3c;
+      background: #fff5f5;
+    }
+    .form-group .error-message {
+      color: #e74c3c;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    .form-group .error-message.show { display: block; }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group .helper-text { font-size: 0.8rem; color: #6b7c93; margin-top: 0.3rem; }
+    .form-group input[type="file"] {
+      padding: 0.8rem;
+      border: 2px dashed var(--accent);
+      background: #fcf9f5;
+      cursor: pointer;
+    }
+    .form-group input[type="file"]:hover { background: #f8f0e8; }
+    .form-group input[type="file"].error { border-color: #e74c3c; background: #fff5f5; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .apply-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid #f0f4fa;
+    }
+    .apply-actions .btn { flex: 1; justify-content: center; min-width: 140px; }
+
+    /* ---------- SUCCESS PAGE ---------- */
+    .success-section {
+      display: none;
+      padding: 6rem 0;
+      background: #f0f9f4;
+      min-height: 80vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-section.active { display: flex; }
+    .success-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: var(--radius);
+      padding: 4rem 3rem;
+      text-align: center;
+      box-shadow: var(--shadow-hover);
+      border: 2px solid #27ae60;
+    }
+    .success-container .icon { font-size: 4.5rem; color: #27ae60; margin-bottom: 1rem; }
+    .success-container h2 { font-size: 2rem; font-weight: 800; }
+    .success-container .details {
+      background: var(--bg-light);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+    .success-container .details p { margin: 0.3rem 0; }
+    .success-container .details strong { color: var(--primary); }
+    .success-container .actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1.5rem; }
+
+    /* ---------- CONTACT ---------- */
+    .contact-section {
+      padding: 6rem 0;
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 60%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.06), transparent 70%);
+      pointer-events: none;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-section h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: white;
+    }
+    .contact-section h2 .highlight { color: var(--accent); }
+    .contact-section p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin: 1rem 0 2rem; }
+    .contact-methods { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .contact-method:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(6px);
+    }
+    .contact-method .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .contact-method .icon.email { background: rgba(201, 169, 110, 0.2); color: var(--accent); }
+    .contact-method .icon.whatsapp { background: rgba(37, 211, 102, 0.2); color: #25d366; }
+    .contact-method .info h4 { color: white; font-weight: 600; }
+    .contact-method .info p { color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; margin: 0; }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #060e1a;
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-flex p { color: rgba(255, 255, 255, 0.4); font-size: 0.9rem; }
+    .footer-flex .social { display: flex; gap: 1rem; }
+    .footer-flex .social a {
+      color: rgba(255, 255, 255, 0.3);
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+    .footer-flex .social a:hover { color: var(--accent); }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-content h1 { font-size: 3rem; }
+      .hero-visual { order: -1; }
+      .regions-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .floating-badge { display: none; }
+    }
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 1.2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        margin-top: 1rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .header-contact { margin-left: auto; margin-right: 0.5rem; }
+      .header-contact a span { display: none; }
+      .hero { padding: 8rem 0 4rem; min-height: auto; }
+      .hero-content h1 { font-size: 2.4rem; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .hero-stats .stat h3 { font-size: 1.5rem; }
+      .section-header h2 { font-size: 2.2rem; }
+      .apply-container { padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .success-container { padding: 2.5rem 1.5rem; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .stats-grid .stat h3 { font-size: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 1.2rem; }
+      .hero-content h1 { font-size: 1.8rem; }
+      .hero-content p { font-size: 1rem; }
+      .hero-stats .stat h3 { font-size: 1.2rem; }
+      .section-header h2 { font-size: 1.8rem; }
+      .jobs-grid { grid-template-columns: 1fr; }
+      .apply-actions .btn { min-width: 100%; }
+      .success-container .actions .btn { min-width: 100%; }
+      .contact-grid { gap: 2rem; }
+      .contact-section h2 { font-size: 2rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .stats-grid .stat h3 { font-size: 1.5rem; }
+      .stats-grid .stat p { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container header-flex">
+      <div class="logo">
+        <span class="fulthah">FULTHAH</span>
+        <span class="agency">AGENCY</span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#regions">Regions</a>
+        <a href="#jobs">Jobs</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-contact">
+        <a href="mailto:fulthah@gmail.com"><i class="fas fa-envelope"></i> <span>Email</span></a>
+        <a href="https://wa.me/18259712061" target="_blank"><i class="fab fa-whatsapp wa-icon"></i> <span>US</span></a>
+        <a href="https://wa.me/971551073191" target="_blank"><i class="fab fa-whatsapp wa-icon"></i> <span>UAE</span></a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div style="display:inline-block; background: rgba(201,169,110,0.15); color: var(--accent); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.8rem; font-weight:600; letter-spacing:2px; margin-bottom:1.5rem;">
+          <i class="fas fa-globe-americas"></i> EUROPE · ASIA · MIDDLE EAST
+        </div>
+        <h1>Global Careers,<br><span class="highlight">Boundless Futures</span></h1>
+        <p>Fulthah Agency connects top talent with life-changing opportunities across Europe, Asia, and the Middle East.</p>
+        <div class="hero-buttons">
+          <a href="#jobs" class="btn btn-accent"><i class="fas fa-briefcase"></i> Explore Jobs</a>
+          <a href="#packages" class="btn btn-outline"><i class="fas fa-tags"></i> View Packages</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><h3>8,400<span class="gold">+</span></h3><p>People Placed</p></div>
+          <div class="stat"><h3>45<span class="gold">+</span></h3><p>Countries</p></div>
+          <div class="stat"><h3>98<span class="gold">%</span></h3><p>Success Rate</p></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-map">
+          <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="400" fill="#0d1a2e" rx="20"/>
+            <!-- Europe -->
+            <ellipse cx="320" cy="120" rx="90" ry="70" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
+            <text x="295" y="125" font-size="12" fill="rgba(201,169,110,0.6)" font-weight="600">EUROPE</text>
+            <circle cx="340" cy="110" r="4" fill="#c9a96e" opacity="0.8"/>
+            <circle cx="290" cy="140" r="3" fill="#c9a96e" opacity="0.6"/>
+            <circle cx="360" cy="130" r="3" fill="#c9a96e" opacity="0.7"/>
+            <!-- Middle East -->
+            <ellipse cx="420" cy="220" rx="70" ry="55" fill="rgba(212,118,42,0.08)" stroke="rgba(212,118,42,0.15)" stroke-width="1"/>
+            <text x="395" y="225" font-size="12" fill="rgba(212,118,42,0.6)" font-weight="600">MIDDLE EAST</text>
+            <circle cx="430" cy="210" r="4" fill="#d4762a" opacity="0.8"/>
+            <circle cx="400" cy="230" r="3" fill="#d4762a" opacity="0.6"/>
+            <circle cx="450" cy="220" r="3" fill="#d4762a" opacity="0.7"/>
+            <!-- Asia -->
+            <ellipse cx="480" cy="300" rx="80" ry="60" fill="rgba(26,138,74,0.08)" stroke="rgba(26,138,74,0.15)" stroke-width="1"/>
+            <text x="455" y="305" font-size="12" fill="rgba(26,138,74,0.6)" font-weight="600">ASIA</text>
+            <circle cx="490" cy="290" r="4" fill="#1a8a4a" opacity="0.8"/>
+            <circle cx="460" cy="310" r="3" fill="#1a8a4a" opacity="0.6"/>
+            <circle cx="510" cy="300" r="3" fill="#1a8a4a" opacity="0.7"/>
+            <!-- Connection lines -->
+            <line x1="340" y1="115" x2="430" y2="215" stroke="rgba(201,169,110,0.08)" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="430" y1="215" x2="490" y2="295" stroke="rgba(201,169,110,0.08)" stroke-width="1" stroke-dasharray="4,4"/>
+            <!-- City dots -->
+            <circle cx="200" cy="180" r="5" fill="#c9a96e" opacity="0.3"/>
+            <circle cx="240" cy="200" r="4" fill="#c9a96e" opacity="0.2"/>
+            <circle cx="170" cy="220" r="3" fill="#c9a96e" opacity="0.2"/>
+            <circle cx="380" cy="280" r="4" fill="#d4762a" opacity="0.3"/>
+            <circle cx="350" cy="300" r="3" fill="#d4762a" opacity="0.2"/>
+            <circle cx="520" cy="250" r="4" fill="#1a8a4a" opacity="0.3"/>
+            <circle cx="540" cy="270" r="3" fill="#1a8a4a" opacity="0.2"/>
+          </svg>
+          <div class="map-overlay"></div>
+        </div>
+        <div class="floating-badge b1"><i class="fas fa-map-pin" style="color:var(--accent);"></i> 45+ Countries</div>
+        <div class="floating-badge b2"><div class="dot"></div> 8,400+ Placed</div>
+        <div class="floating-badge b3"><i class="fas fa-briefcase" style="color:var(--accent);"></i> 200+ Jobs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGIONS / MAP SECTION -->
+  <section class="regions" id="regions">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="label"><i class="fas fa-map-pin"></i> Where We Operate</span>
+        <h2>Global Reach, Local Expertise</h2>
+        <p>We connect talent with opportunities across three major regions</p>
+      </div>
+      <div class="regions-grid">
+        <div class="regions-map fade-up">
+          <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="350" fill="#f8f6f2" rx="16"/>
+            <!-- World map simplified -->
+            <ellipse cx="250" cy="180" rx="180" ry="140" fill="none" stroke="#e6edf8" stroke-width="1"/>
+            <!-- Europe -->
+            <ellipse cx="280" cy="100" rx="70" ry="50" fill="rgba(26,91,191,0.04)" stroke="rgba(26,91,191,0.1)" stroke-width="1.5"/>
+            <text x="255" y="105" font-size="11" fill="#1a5bbf" font-weight="600">🇪🇺 Europe</text>
+            <!-- Middle East -->
+            <ellipse cx="360" cy="190" rx="55" ry="40" fill="rgba(212,118,42,0.04)" stroke="rgba(212,118,42,0.1)" stroke-width="1.5"/>
+            <text x="335" y="195" font-size="11" fill="#d4762a" font-weight="600">🇦🇪 Middle East</text>
+            <!-- Asia -->
+            <ellipse cx="400" cy="270" rx="60" ry="45" fill="rgba(26,138,74,0.04)" stroke="rgba(26,138,74,0.1)" stroke-width="1.5"/>
+            <text x="375" y="275" font-size="11" fill="#1a8a4a" font-weight="600">🌏 Asia</text>
+            <!-- City dots -->
+            <circle cx="290" cy="90" r="3" fill="#1a5bbf" opacity="0.6"/>
+            <circle cx="270" cy="110" r="2.5" fill="#1a5bbf" opacity="0.5"/>
+            <circle cx="310" cy="95" r="2.5" fill="#1a5bbf" opacity="0.5"/>
+            <circle cx="370" cy="180" r="3" fill="#d4762a" opacity="0.6"/>
+            <circle cx="350" cy="200" r="2.5" fill="#d4762a" opacity="0.5"/>
+            <circle cx="390" cy="185" r="2.5" fill="#d4762a" opacity="0.5"/>
+            <circle cx="410" cy="260" r="3" fill="#1a8a4a" opacity="0.6"/>
+            <circle cx="390" cy="280" r="2.5" fill="#1a8a4a" opacity="0.5"/>
+            <circle cx="430" cy="270" r="2.5" fill="#1a8a4a" opacity="0.5"/>
+            <!-- City labels -->
+            <text x="300" y="80" font-size="7" fill="#6b7c93">Berlin</text>
+            <text x="320" y="120" font-size="7" fill="#6b7c93">London</text>
+            <text x="380" y="170" font-size="7" fill="#6b7c93">Dubai</text>
+            <text x="340" y="210" font-size="7" fill="#6b7c93">Doha</text>
+            <text x="420" y="250" font-size="7" fill="#6b7c93">Tokyo</text>
+            <text x="395" y="290" font-size="7" fill="#6b7c93">Singapore</text>
+          </svg>
+        </div>
+        <div class="regions-list fade-up">
+          <div class="region-item">
+            <div class="icon europe"><i class="fas fa-landmark"></i></div>
+            <div class="info">
+              <h4>Europe</h4>
+              <p>Tech, healthcare, engineering, driving</p>
+              <div class="cities"><span>🇩🇪 Berlin</span><span>🇬🇧 London</span><span>🇫🇷 Paris</span><span>🇳🇱 Amsterdam</span></div>
+            </div>
+          </div>
+          <div class="region-item">
+            <div class="icon middle-east"><i class="fas fa-kaaba"></i></div>
+            <div class="info">
+              <h4>Middle East</h4>
+              <p>Construction, finance, energy, driving</p>
+              <div class="cities"><span>🇦🇪 Dubai</span><span>🇶🇦 Doha</span><span>🇸🇦 Riyadh</span><span>🇰🇼 Kuwait</span></div>
+            </div>
+          </div>
+          <div class="region-item">
+            <div class="icon asia"><i class="fas fa-pagoda"></i></div>
+            <div class="info">
+              <h4>Asia</h4>
+              <p>IT, teaching, manufacturing, trade</p>
+              <div class="cities"><span>🇯🇵 Tokyo</span><span>🇸🇬 Singapore</span><span>🇲🇾 Kuala Lumpur</span><span>🇰🇷 Seoul</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOBS SECTION -->
+  <section class="jobs-section" id="jobs">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="label"><i class="fas fa-briefcase"></i> Opportunities</span>
+        <h2>Featured Jobs</h2>
+        <p>Click on any job to apply</p>
+      </div>
+      <div class="jobs-grid">
+        <!-- Job 1 -->
+        <div class="job-card fade-up apply-link" data-job="Software Engineer" data-location="Berlin, Germany" data-region="Europe">
+          <div class="job-icon tech"><i class="fas fa-code"></i></div>
+          <h4>Software Engineer</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Berlin, Germany</div>
+          <div class="tags"><span class="region-europe">Europe</span><span>Full-stack</span><span>3+ yrs</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Relocation support · Tech hub</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+        <!-- Job 2 -->
+        <div class="job-card fade-up apply-link" data-job="Project Manager" data-location="Dubai, UAE" data-region="Middle East">
+          <div class="job-icon management"><i class="fas fa-project-diagram"></i></div>
+          <h4>Project Manager</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Dubai, UAE</div>
+          <div class="tags"><span class="region-middle-east">Middle East</span><span>Construction</span><span>5+ yrs</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Tax-free salary · Expat package</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+        <!-- Job 3 -->
+        <div class="job-card fade-up apply-link" data-job="English Teacher" data-location="Tokyo, Japan" data-region="Asia">
+          <div class="job-icon education"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h4>English Teacher</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</div>
+          <div class="tags"><span class="region-asia">Asia</span><span>ESL</span><span>1+ yr</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Visa + housing · Great culture</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+        <!-- Job 4 -->
+        <div class="job-card fade-up apply-link" data-job="Nurse" data-location="London, UK" data-region="Europe">
+          <div class="job-icon healthcare"><i class="fas fa-heartbeat"></i></div>
+          <h4>Registered Nurse</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> London, UK</div>
+          <div class="tags"><span class="region-europe">Europe</span><span>NHS</span><span>2+ yrs</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Sponsorship · Career growth</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+        <!-- Job 5 -->
+        <div class="job-card fade-up apply-link" data-job="Business Analyst" data-location="Singapore" data-region="Asia">
+          <div class="job-icon finance"><i class="fas fa-chart-line"></i></div>
+          <h4>Business Analyst</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Singapore</div>
+          <div class="tags"><span class="region-asia">Asia</span><span>Finance</span><span>4+ yrs</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Global firm · Great package</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+        <!-- Job 6 -->
+        <div class="job-card fade-up apply-link" data-job="Fleet Driver" data-location="Abu Dhabi, UAE" data-region="Middle East">
+          <div class="job-icon driving"><i class="fas fa-truck"></i></div>
+          <h4>Fleet Driver</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Abu Dhabi, UAE</div>
+          <div class="tags"><span class="region-middle-east">Middle East</span><span>Heavy Vehicle</span><span>3+ yrs</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Accommodation · Good benefits</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+        <!-- Job 7 -->
+        <div class="job-card fade-up apply-link" data-job="Oil &amp; Gas Engineer" data-location="Riyadh, Saudi" data-region="Middle East">
+          <div class="job-icon energy"><i class="fas fa-oil-can"></i></div>
+          <h4>Oil &amp; Gas Engineer</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Riyadh, Saudi</div>
+          <div class="tags"><span class="region-middle-east">Middle East</span><span>Energy</span><span>6+ yrs</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Expat package · Major projects</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+        <!-- Job 8 -->
+        <div class="job-card fade-up apply-link" data-job="Driver / Logistics" data-location="Munich, Germany" data-region="Europe">
+          <div class="job-icon driving"><i class="fas fa-shipping-fast"></i></div>
+          <h4>Driver / Logistics</h4>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Munich, Germany</div>
+          <div class="tags"><span class="region-europe">Europe</span><span>Class C/CE</span><span>2+ yrs</span></div>
+          <p style="font-size:0.9rem; color:#6b7c93;">Great benefits · Modern fleet</p>
+          <a href="#apply" class="btn btn-accent btn-sm" style="margin-top:0.8rem; width:100%; justify-content:center;">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages" id="packages">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="label"><i class="fas fa-credit-card"></i> Pricing</span>
+        <h2>Our Packages</h2>
+        <p>Transparent pricing based on your destination</p>
+      </div>
+      <div class="packages-grid">
+        <div class="package-card featured fade-up">
+          <div class="badge">Popular</div>
+          <div class="icon">🇪🇺</div>
+          <h3>Europe</h3>
+          <div class="price">$6,500 <span>— $8,600</span></div>
+          <ul class="features">
+            <li><i class="fas fa-check-circle"></i> Job placement &amp; visa support</li>
+            <li><i class="fas fa-check-circle"></i> Relocation assistance</li>
+            <li><i class="fas fa-check-circle"></i> Legal &amp; contract advice</li>
+            <li><i class="fas fa-check-circle"></i> 6 months follow-up support</li>
+          </ul>
+          <a href="#apply" class="btn btn-accent inquire-btn"><i class="fas fa-paper-plane"></i> Inquire Now</a>
+        </div>
+        <div class="package-card fade-up">
+          <div class="icon">🇦🇪</div>
+          <h3>Middle East</h3>
+          <div class="price">$3,500 <span>— $5,000</span></div>
+          <ul class="features">
+            <li><i class="fas fa-check-circle"></i> Job placement &amp; visa support</li>
+            <li><i class="fas fa-check-circle"></i> Relocation assistance</li>
+            <li><i class="fas fa-check-circle"></i> Legal &amp; contract advice</li>
+            <li><i class="fas fa-check-circle"></i> 6 months follow-up support</li>
+          </ul>
+          <a href="#apply" class="btn btn-accent inquire-btn"><i class="fas fa-paper-plane"></i> Inquire Now</a>
+        </div>
+        <div class="package-card fade-up">
+          <div class="icon">🌏</div>
+          <h3>Asia</h3>
+          <div class="price">$4,200 <span>— $6,800</span></div>
+          <ul class="features">
+            <li><i class="fas fa-check-circle"></i> Job placement &amp; visa support</li>
+            <li><i class="fas fa-check-circle"></i> Relocation assistance</li>
+            <li><i class="fas fa-check-circle"></i> Legal &amp; contract advice</li>
+            <li><i class="fas fa-check-circle"></i> 6 months follow-up support</li>
+          </ul>
+          <a href="#apply" class="btn btn-accent inquire-btn"><i class="fas fa-paper-plane"></i> Inquire Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BANNER -->
+  <section class="stats-banner">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat fade-up"><h3>8,400<span class="gold">+</span></h3><p>People Placed Worldwide</p></div>
+        <div class="stat fade-up"><h3>45<span class="gold">+</span></h3><p>Countries</p></div>
+        <div class="stat fade-up"><h3>200<span class="gold">+</span></h3><p>Job Roles</p></div>
+        <div class="stat fade-up"><h3>98<span class="gold">%</span></h3><p>Success Rate</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM -->
+  <section class="apply-section" id="apply">
+    <div class="container">
+      <div class="apply-container">
+        <h2><i class="fas fa-file-alt"></i> Apply Now</h2>
+        <div class="job-title-display">Applying for: <span id="selectedJob">Select a job above</span></div>
+
+        <form id="applicationForm">
+          <input type="hidden" id="jobTitle" name="job_title">
+          <input type="hidden" id="jobLocation" name="job_location">
+          <input type="hidden" id="jobRegion" name="job_region">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span class="required">*</span></label>
+              <input type="text" id="firstName" placeholder="Enter your first name" required>
+              <div class="error-message" id="firstNameError">Please enter your first name</div>
+            </div>
+            <div class="form-group">
+              <label>Last Name <span class="required">*</span></label>
+              <input type="text" id="lastName" placeholder="Enter your last name" required>
+              <div class="error-message" id="lastNameError">Please enter your last name</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+            <div class="error-message" id="emailError">Please enter a valid email</div>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" placeholder="+1 234 567 890" required>
+            <div class="helper-text">Include country code</div>
+            <div class="error-message" id="phoneError">Please enter your phone number</div>
+          </div>
+
+          <div class="form-group">
+            <label>Years of Experience <span class="required">*</span></label>
+            <select id="experience" required>
+              <option value="">Select experience level</option>
+              <option value="0-1">0-1 years</option>
+              <option value="1-2">1-2 years</option>
+              <option value="2-3">2-3 years</option>
+              <option value="3-5">3-5 years</option>
+              <option value="5-7">5-7 years</option>
+              <option value="7-10">7-10 years</option>
+              <option value="10+">10+ years</option>
+            </select>
+            <div class="error-message" id="experienceError">Please select your experience</div>
+          </div>
+
+          <div class="form-group">
+            <label>Current Location <span class="required">*</span></label>
+            <input type="text" id="currentLocation" placeholder="City, Country" required>
+            <div class="error-message" id="currentLocationError">Please enter your location</div>
+          </div>
+
+          <div class="form-group">
+            <label>Key Skills &amp; Qualifications</label>
+            <textarea id="skills" placeholder="List your relevant skills, certifications..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Why are you a good fit? <span class="required">*</span></label>
+            <textarea id="message" placeholder="Tell us about your experience..." required></textarea>
+            <div class="error-message" id="messageError">Please tell us why you're a good fit</div>
+          </div>
+
+          <div class="form-group">
+            <label>Upload CV / Resume <span class="required">*</span></label>
+            <input type="file" id="resume" accept=".pdf,.doc,.docx,.txt" required>
+            <div class="file-info">Accepted: PDF, DOC, DOCX, TXT (Max 5MB)</div>
+            <div class="error-message" id="resumeError">Please attach your CV</div>
+          </div>
+
+          <div class="apply-actions">
+            <a href="#jobs" class="btn btn-back back-to-jobs" style="background:#e6edf8; color:var(--primary);"><i class="fas fa-arrow-left"></i> Back to Jobs</a>
+            <button type="submit" class="btn btn-accent"><i class="fas fa-paper-plane"></i> Submit Application</button>
+          </div>
+        </form>
+
+        <div class="contact-options" style="margin-top:1.5rem; padding:1.5rem; background:var(--bg-light); border-radius:16px; text-align:center;">
+          <p style="font-weight:500; margin-bottom:0.8rem;"><i class="fas fa-phone"></i> Prefer to contact us directly?</p>
+          <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+            <a href="mailto:fulthah@gmail.com" class="btn btn-sm" style="background:var(--accent); color:var(--primary);">Email Us</a>
+            <a href="https://wa.me/18259712061" target="_blank" class="btn btn-sm btn-whatsapp">WhatsApp US</a>
+            <a href="https://wa.me/971551073191" target="_blank" class="btn btn-sm btn-whatsapp-uae">WhatsApp UAE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS PAGE -->
+  <section class="success-section" id="success">
+    <div class="container">
+      <div class="success-container">
+        <div class="icon"><i class="fas fa-check-circle"></i></div>
+        <h2>Application Submitted! 🎉</h2>
+        <p style="color:#2d4058; margin-bottom:0.5rem;">Thank you for applying through Fulthah Agency.</p>
+        <div class="details" id="successDetails">
+          <p><strong>Position:</strong> <span id="successJob">—</span></p>
+          <p><strong>Location:</strong> <span id="successLocation">—</span></p>
+          <p><strong>Applicant:</strong> <span id="successName">—</span></p>
+          <p><strong>Email:</strong> <span id="successEmail">—</span></p>
+          <p><strong>CV:</strong> <span id="successFile">Attached</span></p>
+        </div>
+        <p style="color:#2d4058;">We'll contact you within 2-3 business days.</p>
+        <div class="actions">
+          <a href="#jobs" class="btn btn-accent back-to-jobs"><i class="fas fa-briefcase"></i> More Jobs</a>
+          <a href="#contact" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Contact Us</a>
+          <a href="#home" class="btn btn-back" style="background:#e6edf8; color:var(--primary);"><i class="fas fa-home"></i> Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="fade-up">
+          <h2>Ready to <span class="highlight">Move</span>?</h2>
+          <p>Let's start your journey to a new career abroad. We're here to help every step of the way.</p>
+          <div class="contact-methods">
+            <a href="mailto:fulthah@gmail.com" class="contact-method">
+              <div class="icon email"><i class="fas fa-envelope"></i></div>
+              <div class="info"><h4>Email</h4><p>fulthah@gmail.com</p></div>
+            </a>
+            <a href="https://wa.me/18259712061" target="_blank" class="contact-method">
+              <div class="icon whatsapp"><i class="fab fa-whatsapp"></i></div>
+              <div class="info"><h4>WhatsApp US</h4><p>+1 825 971 2061</p></div>
+            </a>
+            <a href="https://wa.me/971551073191" target="_blank" class="contact-method">
+              <div class="icon whatsapp" style="background:rgba(18,140,126,0.2); color:#128C7E;"><i class="fab fa-whatsapp"></i></div>
+              <div class="info"><h4>WhatsApp UAE</h4><p>+971 55 107 3191</p></div>
+            </a>
+          </div>
+        </div>
+        <div class="fade-up" style="display:flex; justify-content:center; align-items:center;">
+          <div style="background:rgba(255,255,255,0.04); border-radius:var(--radius); padding:3rem; text-align:center; border:1px solid rgba(255,255,255,0.06); width:100%; max-width:400px;">
+            <div style="font-size:4rem; margin-bottom:1rem;">✈️</div>
+            <h3 style="color:white; font-size:1.5rem; font-weight:700;">Start Your Journey</h3>
+            <p style="color:rgba(255,255,255,0.6); margin:0.5rem 0 1.5rem;">Get in touch and let's find your perfect role abroad.</p>
+            <a href="#apply" class="btn btn-accent" style="width:100%; justify-content:center;"><i class="fas fa-paper-plane"></i> Apply Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-flex">
+      <p>&copy; 2026 Fulthah Agency — Global Recruitment</p>
+      <div class="social">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    (function() {
+      // Mobile menu
+      const toggleBtn = document.getElementById('navToggle');
+      const nav = document.getElementById('navLinks');
+      if (toggleBtn && nav) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          nav.classList.toggle('open');
+        });
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => nav.classList.remove('open'));
+        });
+      }
+
+      // Scroll animations
+      const fadeEls = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      fadeEls.forEach(el => observer.observe(el));
+
+      // Header scroll effect
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      // Apply links
+      const applyLinks = document.querySelectorAll('.apply-link');
+      const applySection = document.getElementById('apply');
+      const successSection = document.getElementById('success');
+      const selectedJob = document.getElementById('selectedJob');
+      const jobTitle = document.getElementById('jobTitle');
+      const jobLocation = document.getElementById('jobLocation');
+      const jobRegion = document.getElementById('jobRegion');
+
+      applyLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const isCard = this.classList.contains('job-card');
+          const isBtn = this.classList.contains('btn');
+          if (isCard || isBtn) {
+            e.preventDefault();
+            const job = this.dataset.job || 'Unknown Position';
+            const location = this.dataset.location || 'Unknown Location';
+            const region = this.dataset.region || 'Unknown Region';
+            selectedJob.textContent = `${job} (${location})`;
+            jobTitle.value = job;
+            jobLocation.value = location;
+            jobRegion.value = region;
+            successSection.classList.remove('active');
+            applySection.classList.add('active');
+            applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Inquire buttons
+      document.querySelectorAll('.inquire-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          selectedJob.textContent = 'General Inquiry';
+          jobTitle.value = 'General Inquiry';
+          jobLocation.value = 'Not specified';
+          jobRegion.value = 'Not specified';
+          successSection.classList.remove('active');
+          applySection.classList.add('active');
+          applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Back to jobs
+      document.querySelectorAll('.back-to-jobs').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          applySection.classList.remove('active');
+          successSection.classList.remove('active');
+          document.getElementById('jobs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Form validation
+      const form = document.getElementById('applicationForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const fields = {
+            firstName: { el: document.getElementById('firstName'), error: 'firstNameError', label: 'First Name' },
+            lastName: { el: document.getElementById('lastName'), error: 'lastNameError', label: 'Last Name' },
+            email: { el: document.getElementById('email'), error: 'emailError', label: 'Email', validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+            phone: { el: document.getElementById('phone'), error: 'phoneError', label: 'Phone' },
+            experience: { el: document.getElementById('experience'), error: 'experienceError', label: 'Experience' },
+            currentLocation: { el: document.getElementById('currentLocation'), error: 'currentLocationError', label: 'Current Location' },
+            message: { el: document.getElementById('message'), error: 'messageError', label: 'Message' },
+            resume: { el: document.getElementById('resume'), error: 'resumeError', label: 'Resume', validate: (v) => v.files && v.files.length > 0 }
+          };
+
+          let isValid = true;
+          document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+          document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(el => el.classList.remove('error'));
+
+          for (const [key, field] of Object.entries(fields)) {
+            const val = field.el.value;
+            const hasError = field.validate ? !field.validate(field.el) : !val.trim();
+            if (hasError) {
+              field.el.classList.add('error');
+              document.getElementById(field.error).classList.add('show');
+              isValid = false;
+            }
+          }
+
+          if (!isValid) {
+            const firstError = document.querySelector('.form-group .error-message.show');
+            if (firstError) firstError.closest('.form-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          // Build email
+          const data = new FormData(form);
+          const job = data.get('job_title') || 'Not specified';
+          const loc = data.get('job_location') || 'Not specified';
+          const region = data.get('job_region') || 'Not specified';
+          const file = document.getElementById('resume').files[0];
+          const fileName = file ? file.name : 'No file';
+
+          let body = 'FULTHAH AGENCY - JOB APPLICATION\n';
+          body += '='.repeat(50) + '\n\n';
+          body += `Job Title: ${job}\n`;
+          body += `Location: ${loc}\n`;
+          body += `Region: ${region}\n`;
+          body += '-'.repeat(50) + '\n\n';
+          body += `First Name: ${data.get('first_name') || 'N/A'}\n`;
+          body += `Last Name: ${data.get('last_name') || 'N/A'}\n`;
+          body += `Email: ${data.get('email') || 'N/A'}\n`;
+          body += `Phone: ${data.get('phone') || 'N/A'}\n`;
+          body += `Experience: ${data.get('experience') || 'N/A'}\n`;
+          body += `Current Location: ${data.get('current_location') || 'N/A'}\n\n`;
+          body += `Skills:\n${data.get('skills') || 'N/A'}\n\n`;
+          body += `Why I'm a good fit:\n${data.get('message') || 'N/A'}\n\n`;
+          body += `CV/Resume: ${fileName}\n\n`;
+          body += '='.repeat(50) + '\n';
+          body += 'Sent from Fulthah Agency Website';
+
+          window.location.href = `mailto:fulthah@gmail.com?subject=${encodeURIComponent('Job Application: ' + job)}&body=${encodeURIComponent(body)}`;
+
+          // Show success
+          document.getElementById('successJob').textContent = job;
+          document.getElementById('successLocation').textContent = loc;
+          document.getElementById('successName').textContent = `${data.get('first_name')} ${data.get('last_name')}`;
+          document.getElementById('successEmail').textContent = data.get('email');
+          document.getElementById('successFile').textContent = fileName;
+
+          applySection.classList.remove('active');
+          successSection.classList.add('active');
+          successSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      // Hash handling
+      if (window.location.hash === '#apply') {
+        applySection.classList.add('active');
+        successSection.classList.remove('active');
+      }
+      if (window.location.hash === '#success') {
+        successSection.classList.add('active');
+        applySection.classList.remove('active');
+      }
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#apply') {
+          applySection.classList.add('active');
+          successSection.classList.remove('active');
+        } else if (window.location.hash === '#success') {
+          successSection.classList.add('active');
+          applySection.classList.remove('active');
+        } else {
+          applySection.classList.remove('active');
+          successSection.classList.remove('active');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
